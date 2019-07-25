@@ -149,9 +149,12 @@ def dnac_get_modules(dnac_session, dnac_host, dnac_headers, device_id):
                          verify=False,
                          headers=dnac_headers
                          )
-    r.raise_for_status()
-    # print('DNAC Response Body: ' + r.text)
-    return r.json()['response']
+    try:
+        r.raise_for_status()
+        # print('DNAC Response Body: ' + r.text)
+        return r.json()['response']
+    except:
+        return 0
 # END MISSION SECTION
 
 
@@ -193,7 +196,7 @@ with requests.Session() as dnac_session:
                                   dnac_host,
                                   dnac_headers,
                                   d['id'])
-        if c > 1:
+        if c > 0:
             print('Device ' + d['id'] + ' with NeXt ID ' +
                   str(i) + ' has ' + str(c) + ' modules')
             next_data['nodes'].append({'id ': i,
