@@ -101,11 +101,11 @@ if __name__ == "__main__":
         "platformId","SW Version","role","Uptime"))
 
     for device in response['response']:
-        uptime = "N/A" if device['upTime'] is None else device['upTime']
         print("{0:42}{1:17}{2:12}{3:18}{4:12}{5:16}{6:15}".
-            format(device['hostname'],
-                    device['managementIpAddress'],
-                    device['serialNumber'],
-                    device['platformId'],
-                    device['softwareVersion'],
-                    device['role'],uptime))
+            format("N/A" if device['hostname'] is None else device['hostname'],
+                    "N/A" if device['managementIpAddress'] is None else device['managementIpAddress'],
+                    "N/A" if device['serialNumber'] is None else device['serialNumber'],
+                    "N/A" if device['platformId'] is None else device['platformId'],
+                    "N/A" if device['softwareVersion'] is None else device['softwareVersion'],
+                    "N/A" if device['role'] is None else device['role'],
+                    "N/A" if device['upTime'] is None else device['upTime']))
