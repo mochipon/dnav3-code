@@ -33,7 +33,7 @@ SOFTWARE.
 #     sandbox - Cisco DevNet Always-On / Reserved Sandboxes
 #     express - Cisco DevNet Express Lab Backend
 #     custom  - Your Own "Custom" Lab Backend
-ENVIRONMENT_IN_USE = "sandbox"
+ENVIRONMENT_IN_USE = "express"
 
 # Custom Lab Backend
 DNA_CENTER = {
@@ -48,7 +48,7 @@ DNA_CENTER = {
 # Set the 'Environment Variables' based on the lab environment in use
 if ENVIRONMENT_IN_USE == "sandbox":
     DNA_CENTER = {
-        "host": "sandboxdnac.cisco.com",
+        "host": "sandboxdnac2.cisco.com",
         "port": 443,
         "username": "devnetuser",
         "password": "Cisco123!"
@@ -87,7 +87,7 @@ if ENVIRONMENT_IN_USE == "sandbox":
 
 elif ENVIRONMENT_IN_USE == "express":
     DNA_CENTER = {
-        "host": "sandboxdnac.cisco.com",
+        "host": "sandboxdnac2.cisco.com",
         "port": 443,
         "username": "devnetuser",
         "password": "Cisco123!"

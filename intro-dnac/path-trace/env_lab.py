@@ -48,7 +48,7 @@ ENVIRONMENT_IN_USE = "sandbox"
 # Set the 'Environment Variables' based on the lab environment in use
 if ENVIRONMENT_IN_USE == "sandbox":
     apicem = {
-        "host": "sandboxdnac.cisco.com",
+        "host": "sandboxdnac2.cisco.com",
         "port": 443,
         "username": "devnetuser",
         "password": "Cisco123!"
@@ -87,7 +87,7 @@ if ENVIRONMENT_IN_USE == "sandbox":
 
 elif ENVIRONMENT_IN_USE == "express":
     DNA_CENTER = {
-        "host": "sandboxdnac.cisco.com",
+        "host": "sandboxdnac2.cisco.com",
         "port": 443,
         "username": "devnetuser",
         "password": "Cisco123!"
