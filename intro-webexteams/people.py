@@ -1,14 +1,5 @@
-"""Set your Environment Information once, not many times.
-
-The provided sample code in this repository will reference this file to get the
-needed information about you and your context to complete the labs.  You
-provide this info here once and the scripts in this repository will access it
-as needed by the lab.
-
-TODO: To setup your `env_user.py` copy this file then edit and save your info
-
-$ cp env_user.template env_user.py
-
+#!/usr/bin/env python
+"""Webex Teams API - Hands on exercise 02
 
 Copyright (c) 2018 Cisco and/or its affiliates.
 
@@ -31,11 +22,36 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
 
+import ciscosparkapi
+import os
+import sys
 
-# User Input
+# Get the absolute path for the directory where this file is located "here"
+here = os.path.abspath(os.path.dirname(__file__))
 
-SPARK_ACCESS_TOKEN = ""
-SPARK_ROOM_ID = ""
-SPARK_BOT_ACCESS_TOKEN = ""
+# Get the absolute path for the project / repository root
+project_root = os.path.abspath(os.path.join(here, ".."))
 
-# End User Input
+# Extend the system path to include the project root and import the env files
+sys.path.insert(0, project_root)
+import env_user
+
+
+# Create a CiscoSparkAPI connection object; uses your SPARK_ACCESS_TOKEN
+# environment variable
+api = ciscosparkapi.CiscoSparkAPI(access_token=env_user.SPARK_ACCESS_TOKEN)
+
+
+# Get my user information
+print("Get my information...")
+me = api.people.me()
+print(me)
+
+
+# Get someone's information
+print("Get the list of people with specified email address...")
+# Creates a generator container (iterable) that lists the people I search
+people = api.people.list(email="matagawa@cisco.com")
+# Return the displayName of every person found
+for person in people:
+    print(person)
